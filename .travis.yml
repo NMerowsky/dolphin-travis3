@@ -71,7 +71,7 @@ script:
   - sudo ../unitTesting/run_insertion.sh
   
   #	Tophat2
-  - travis_wait 40404040404040404040404040404040404040404040404040404040404040404040404040404040 python dolphin_wrapper.py -r 7 -c Travis
+  - travis_wait 40 python dolphin_wrapper.py -r 7 -c Travis
   
   #	additional ajax
   #- phpunit unitTesting/ajax/tablegenerator_unittest.php
