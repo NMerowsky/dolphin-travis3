@@ -66,11 +66,12 @@ script:
   - sudo mysql --user=bioinfo --password=bioinfo2013 biocore < db/travis.sql
   #	Run workflow
   - cd scripts
-  - travis_wait 20 python dolphin_wrapper.py -r 4 -c Travis
+  - travis_wait 15 python dolphin_wrapper.py -r 4 -c Travis
   - sudo ../unitTesting/run_insertion.sh
   
   #	Tophat2
-  - python dolphin_wrapper.py -r 7 -c Travis
+  - travis_wait 25 python dolphin_wrapper.py -r 7 -c Travis
+  - sudo tree /home/travis/build/testrun4
   
   #	additional ajax
   #- phpunit unitTesting/ajax/tablegenerator_unittest.php
