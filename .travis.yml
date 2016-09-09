@@ -57,6 +57,7 @@ before_script:
   - sudo mysql -e "use biocore; INSERT INTO ngs_organism (organism, organism_symbol) VALUES ('mousetest', 'mm10'); UPDATE ngs_samples SET organism_id = 1;" -uroot
   - export PATH=$PATH:/home/travis/build/dolphin-bin/
   - DOLPHIN_PARAMS_SECTION=Travis
+  - echo $PATH
 
 script:
   #	ajax - initial mapping
