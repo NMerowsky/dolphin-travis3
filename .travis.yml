@@ -56,10 +56,9 @@ before_script:
   - sudo mysql -e "use biocore; INSERT INTO amazon_credentials ( aws_access_key_id, aws_secret_access_key, bucket ) VALUES ( 'test_access', 'test_secret', 'test_bucket' );" -uroot
   - sudo mysql -e "use biocore; INSERT INTO ngs_organism (organism, organism_symbol) VALUES ('mousetest', 'mm10'); UPDATE ngs_samples SET organism_id = 1;" -uroot
   - export PATH=$PATH:/usr/local/bin/dolphin-bin/
-  - echo BOWTIE_INDEXES
-  - export BOWTIE_INDEXES=/home/travis/build/dolphin-genome-data/mousetest/mm10
-  - echo BOWTIE_INDEXES
-  - export DOLPHIN_PARAMS_SECTION=Travis
+  - export PATH=$PATH:/usr/local/bin/dolphin-bin/bowtie2
+  - BOWTIE_INDEXES=/home/travis/build/dolphin-genome-data/mousetest/mm10
+  - DOLPHIN_PARAMS_SECTION=Travis
 
 script:
   #	ajax - initial mapping
