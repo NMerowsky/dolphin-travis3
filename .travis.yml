@@ -23,11 +23,6 @@ before_install:
   - cd bowtie2-2.2.9
   - export PATH=$PATH:$(pwd)
   - cd ..
-  - wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.12.Linux_x86_64.tar.gz
-  - tar zxvf tophat-2.0.12.Linux_x86_64.tar.gz
-  - export PATH=$PATH:$(pwd)/tophat-2.0.12.Linux_x86_64
-  - echo $PATH
-  - tophat -v
   
 install:
   ######################
@@ -66,7 +61,7 @@ before_script:
   - sudo mysql -e "use biocore; INSERT INTO amazon_credentials ( aws_access_key_id, aws_secret_access_key, bucket ) VALUES ( 'test_access', 'test_secret', 'test_bucket' );" -uroot
   - sudo mysql -e "use biocore; INSERT INTO ngs_organism (organism, organism_symbol) VALUES ('mousetest', 'mm10'); UPDATE ngs_samples SET organism_id = 1;" -uroot
   - sudo chmod -R 777 /usr/local/bin
-  #- export PATH=/usr/local/bin/dolphin-bin/:$PATH
+  - export PATH=/usr/local/bin/dolphin-bin/:$PATH
   #- export PATH=/usr/local/bin/dolphin-bin/tophat2_2.0.12/:$PATH
   #- ls -lash /usr/local/bin/dolphin-bin
   #- echo $PATH
@@ -84,10 +79,9 @@ script:
   - sudo ../unitTesting/run_insertion.sh
 
   - mkdir -p /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1/  
-  - tophat -p 4 --keep-tmp -G /home/travis/build/dolphin-genome-data/mousetest/mm10/ucsc.gtf -o /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1 /home/travis/build/dolphin-genome-data/mousetest/mm10/mm10 /home/travis/build/testrun4/input/example_sample_1.1.fastq /home/travis/build/testrun4/input/example_sample_1.2.fastq
 
   #	Tophat2
-  #- travis_wait 10 python dolphin_wrapper.py -r 7 -c Travis
+  - travis_wait 10 python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
   - sudo cat /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1/logs/*
   
