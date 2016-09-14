@@ -18,6 +18,11 @@ before_install:
   - sudo apt-get -y install apache2 libapache2-mod-php5 php5-mysqlnd php5-gd php-pear php5-curl lynx-cur libxml2-dev software-properties-common tree perl
   - sudo pip install --upgrade pycrypto urllib3
   - sudo pip install simple-crypt MySQL-python pjson boto numpy boto3
+  - wget http://freefr.dl.sourceforge.net/project/bowtie-bio/bowtie/0.12.8/bowtie-0.12.8-src.zip
+  - unzip bowtie-0.12.8-src.zip
+  - cd bowtie-0.12.8
+  - make
+  - cd ..
   
 install:
   ######################
