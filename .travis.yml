@@ -22,9 +22,11 @@ before_install:
   - unzip bowtie-0.12.8-src.zip
   - cd bowtie-0.12.8
   - make
-  - PATH=$PATH:$(pwd)
-  - export PATH
+  - export PATH=$PATH:$(pwd)
   - cd ..
+  - wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.12.Linux_x86_64.tar.gz
+  - tar zxvf tophat-2.0.12.Linux_x86_64.tar.gz
+  - export PATH=$PATH:$(pwd)/tophat-2.0.12.Linux_x86_64.tar.gz
   
 install:
   ######################
@@ -81,7 +83,7 @@ script:
   - sudo ../unitTesting/run_insertion.sh
 
   - mkdir -p /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1/  
-  - sudo /usr/local/bin/dolphin-bin/tophat2_2.0.12/tophat -p 4 --keep-tmp -G /home/travis/build/dolphin-genome-data/mousetest/mm10/ucsc.gtf -o /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1 /home/travis/build/dolphin-genome-data/mousetest/mm10/mm10 /home/travis/build/testrun4/input/example_sample_1.1.fastq /home/travis/build/testrun4/input/example_sample_1.2.fastq
+  - sudo tophat -p 4 --keep-tmp -G /home/travis/build/dolphin-genome-data/mousetest/mm10/ucsc.gtf -o /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1 /home/travis/build/dolphin-genome-data/mousetest/mm10/mm10 /home/travis/build/testrun4/input/example_sample_1.1.fastq /home/travis/build/testrun4/input/example_sample_1.2.fastq
 
   #	Tophat2
   #- travis_wait 10 python dolphin_wrapper.py -r 7 -c Travis
