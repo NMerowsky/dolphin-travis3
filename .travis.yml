@@ -18,10 +18,9 @@ before_install:
   - sudo apt-get -y install apache2 libapache2-mod-php5 php5-mysqlnd php5-gd php-pear php5-curl lynx-cur libxml2-dev software-properties-common tree perl
   - sudo pip install --upgrade pycrypto urllib3
   - sudo pip install simple-crypt MySQL-python pjson boto numpy boto3
-  - wget http://freefr.dl.sourceforge.net/project/bowtie-bio/bowtie/0.12.8/bowtie-0.12.8-src.zip
-  - unzip bowtie-0.12.8-src.zip
-  - cd bowtie-0.12.8
-  - make
+  - wget -O bowtie2-2.2.9.zip https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.9/bowtie2-2.2.9-linux-x86_64.zip/download
+  - unzip bowtie2-2.2.9.zip
+  - cd bowtie2-2.2.9
   - export PATH=$PATH:$(pwd)
   - cd ..
   - wget http://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.12.Linux_x86_64.tar.gz
