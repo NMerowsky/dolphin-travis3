@@ -22,6 +22,8 @@ before_install:
   - unzip bowtie-0.12.8-src.zip
   - cd bowtie-0.12.8
   - make
+  - PATH=$PATH:$(pwd)
+  - export PATH
   - cd ..
   
 install:
