@@ -23,8 +23,9 @@ before_install:
   - wget -O bowtie2-2.2.3.zip https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.3/bowtie2-2.2.3-linux-x86_64.zip/download
   - unzip bowtie2-2.2.3.zip
   - cd bowtie2-2.2.3
-  - export PATH=$PATH:$(pwd)
+  - export PATH=$(pwd):$PATH
   - cd ..
+  - export PATH=$PATH:/home/travis/build/dolphin-bin
 
 install:
   ######################
@@ -62,6 +63,7 @@ before_script:
   - sudo mysql -e "use biocore; INSERT INTO ngs_organism (organism, organism_symbol) VALUES ('mousetest', 'mm10'); UPDATE ngs_samples SET organism_id = 1;" -uroot
   - sudo chmod -R 777 /usr/local/bin
   - DOLPHIN_PARAMS_SECTION=Travis
+  - echo $PATH
 
 script:
   #	ajax - initial mapping
