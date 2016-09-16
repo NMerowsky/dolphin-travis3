@@ -73,9 +73,8 @@ script:
   - sudo ../unitTesting/run_insertion.sh
 
   #	Tophat2
-  - mkdir -p /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1
-  - /home/travis/build/dolphin-bin/tophat2_2.0.12/tophat -p 4 --keep-tmp -G /home/travis/build/dolphin-genome-data/mousetest/mm10/ucsc.gtf -o /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1 /home/travis/build/dolphin-genome-data/mousetest/mm10/mm10 /home/travis/build/testrun4/input/example_sample_1.1.fastq /home/travis/build/testrun4/input/example_sample_1.2.fastq
-  #- travis_wait 15 python dolphin_wrapper.py -r 7 -c Travis
+  #- mkdir -p /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1
+  - travis_wait 25 python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
   - sudo cat /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1/logs/*
   
