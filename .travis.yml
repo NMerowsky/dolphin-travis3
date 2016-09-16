@@ -22,7 +22,7 @@ before_install:
   - sudo git clone https://github.com/UMMS-Biocore/dolphin-bin.git /usr/local/bin/dolphin-bin
   - sudo git clone https://github.com/UMMS-Biocore/dolphin-genome-data.git /home/travis/build/dolphin-genome-data
   - export PATH=/usr/local/bin/dolphin-bin/:$PATH
-  - export PATH=/usr/local/bin/dolphin-bin/tophat2_2.0.12/:$PATHi
+  - export PATH=/usr/local/bin/dolphin-bin/tophat2_2.0.12/:$PATH
 
 install:
   ######################
