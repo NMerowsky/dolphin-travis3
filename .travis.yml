@@ -20,12 +20,8 @@ before_install:
   - sudo pip install simple-crypt MySQL-python pjson boto numpy boto3
   - git clone https://github.com/UMMS-Biocore/dolphin-bin.git /home/travis/build/dolphin-bin
   - git clone https://github.com/UMMS-Biocore/dolphin-genome-data.git /home/travis/build/dolphin-genome-data
-  - wget -O bowtie2-2.2.3.zip https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.3/bowtie2-2.2.3-linux-x86_64.zip/download
-  - unzip bowtie2-2.2.3.zip
-  - cd bowtie2-2.2.3
-  - export PATH=$(pwd):$PATH
-  - cd ..
   - export PATH=$PATH:/home/travis/build/dolphin-bin
+  - bowtie --version
 
 install:
   ######################
@@ -77,7 +73,8 @@ script:
   - sudo ../unitTesting/run_insertion.sh
 
   #	Tophat2
-  - travis_wait 15 python dolphin_wrapper.py -r 7 -c Travis
+  -/home/travis/build/dolphin-bin/tophat2_2.0.12/tophat -p 4 --keep-tmp -G /home/travis/build/dolphin-genome-data/mousetest/mm10/ucsc.gtf -o /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1 /home/travis/build/dolphin-genome-data/mousetest/mm10/mm10 /home/travis/build/testrun4/input/example_sample_1.1.fastq /home/travis/build/testrun4/input/example_sample_1.2.fastq
+  #- travis_wait 15 python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
   - sudo cat /home/travis/build/testrun4/tophat/pipe.tophat.example_sample_1/logs/*
   
