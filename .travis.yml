@@ -23,7 +23,8 @@ before_install:
   - git clone https://github.com/UMMS-Biocore/dolphin-genome-data.git /home/travis/build/dolphin-genome-data
   - export PATH=$PATH:/home/travis/build/dolphin-bin
   - bowtie --version
-  - sudo echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/travis/build/dolphin-bin"' > /etc/environment
+  - sudo echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/travis/build/dolphin-bin"' > environment
+  - sudo mv environment /etc/environment
 
 install:
   ######################
