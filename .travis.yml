@@ -21,9 +21,6 @@ before_install:
   - sudo pip install --upgrade pycrypto urllib3
   - sudo pip install simple-crypt MySQL-python pjson boto numpy boto3
   - git clone https://github.com/UMMS-Biocore/dolphin-bin.git /home/travis/build/dolphin-bin
-  - cd /home/travis/build/dolphin-bin/RSEM-1.2.29
-  - make
-  - cd -
   - git clone https://github.com/UMMS-Biocore/dolphin-genome-data.git /home/travis/build/dolphin-genome-data
   - sudo sed -i '$ a\export PATH=$PATH:/home/travis/build/dolphin-bin' /etc/apache2/envvars
   - sudo cat /etc/apache2/envvars
@@ -80,6 +77,7 @@ script:
   #	Tophat2
   - travis_wait 30 time python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
+  - sudo cat /home/travis/build/testrun4/tmp/logs/JOB.stepPicard*
   
   #	additional ajax
   #- phpunit unitTesting/ajax/tablegenerator_unittest.php
