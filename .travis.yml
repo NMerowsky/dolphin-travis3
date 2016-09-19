@@ -71,11 +71,11 @@ script:
   - sudo mysql --user=bioinfo --password=bioinfo2013 biocore < db/travis.sql
   #	Run workflow
   - cd scripts
-  - travis_wait 10 time python dolphin_wrapper.py -r 4 -c Travis
+  - travis_wait 10 python dolphin_wrapper.py -r 4 -c Travis
   - sudo ../unitTesting/run_insertion.sh
 
   #	Tophat2
-  - travis_wait 30 time python dolphin_wrapper.py -r 7 -c Travis
+  - travis_wait 30 python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
   - sudo cat /home/travis/build/testrun4/tmp/logs/JOB.stepPicard*
   
