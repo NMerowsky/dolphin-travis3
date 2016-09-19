@@ -28,7 +28,6 @@ before_install:
   - sudo chown -R ${APACHE_RUN_USER}:${APACHE_RUN_GROUP} /var/www
   - sudo sed -i '$ a\export JAVA_OPTS="-Djava.util.prefs.systemRoot=/var/www/.java Djava.util.prefs.userRoot=/var/www/.java/.userPrefs\"' /etc/apache2/envvars
   - sudo cat /etc/apache2/envvars
-  - java -version
 
 install:
   ######################
@@ -75,7 +74,7 @@ script:
   - sudo mysql --user=bioinfo --password=bioinfo2013 biocore < db/travis.sql
   #	Run workflow
   - cd scripts
-  - travis_wait 15 python dolphin_wrapper.py -r 4 -c Travis
+  - travis_wait 10 python dolphin_wrapper.py -r 4 -c Travis
   - sudo ../unitTesting/run_insertion.sh
 
   #	Tophat2
