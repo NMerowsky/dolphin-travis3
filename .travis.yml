@@ -25,6 +25,12 @@ before_install:
   - sudo sed -i '$ a\export PATH=$PATH:/home/travis/build/dolphin-bin' /etc/apache2/envvars
   - sudo cat /etc/apache2/envvars
   - export PATH=$PATH:/home/travis/build/dolphin-bin
+  - sudo mkdir -p /var/www/.java/.systemPrefs
+  - sudo mkdir /var/www/.java/.userPrefs
+  - sudo chmod -R 755 /var/www/.java
+  - sudo chown -R ${APACHE_RUN_USER}:${APACHE_RUN_GROUP} /var/www
+  - sudo sed -i '$ a\export JAVA_OPTS="-Djava.util.prefs.systemRoot=/var/www/.java Djava.util.prefs.userRoot=/var/www/.java/.userPrefs\"' /etc/apache2/envvars
+  - java -version
 
 install:
   ######################
