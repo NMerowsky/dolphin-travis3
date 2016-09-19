@@ -14,15 +14,14 @@ services:
 
 before_install:
   - sudo usermod -a -G www-data travis
+  - sudo usermod -a -G travis www-data
   - sudo apt-get update
   - sudo apt-get -y install aptitude
-  - sudo apt-get -y install apache2 libapache2-mod-php5 php5-mysqlnd php5-gd php-pear php5-curl lynx-cur libxml2-dev software-properties-common tree perl samtools
+  - sudo apt-get -y install apache2 libapache2-mod-php5 php5-mysqlnd php5-gd php-pear php5-curl lynx-cur libxml2-dev software-properties-common tree perl
   - sudo pip install --upgrade pycrypto urllib3
   - sudo pip install simple-crypt MySQL-python pjson boto numpy boto3
   - git clone https://github.com/UMMS-Biocore/dolphin-bin.git /home/travis/build/dolphin-bin
   - git clone https://github.com/UMMS-Biocore/dolphin-genome-data.git /home/travis/build/dolphin-genome-data
-  - export PATH=$PATH:/home/travis/build/dolphin-bin
-  - bowtie --version
   - sudo echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/travis/build/dolphin-bin"' > environment
   - sudo mv environment /etc/environment
 
@@ -47,7 +46,6 @@ before_script:
   - sudo mkdir -p /home/travis/build/pub /home/travis/build/logs tmp/files tmp/logs tmp/logs/run4 tmp/logs/run5 tmp/logs/run6 tmp/logs/run7 tmp/logs/run8
   - sudo ln -s $(pwd) /var/www/dolphin
   - sudo ln -s /home/travis/build/pub public/pub
-  - sudo chmod -R 777 /home
   # Manually set up the apache environment variables
   - sudo mysql -u root -e "CREATE USER 'myproject'@'localhost' IDENTIFIED BY 'mypass'"
   - sudo mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'myproject'@'localhost' WITH GRANT OPTION;"
