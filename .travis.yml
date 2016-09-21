@@ -70,16 +70,13 @@ script:
   - phpunit unitTesting/ngsimport_unittest.php
   - phpunit unitTesting/ajax/ngsalterdb_unittest.php
   - sudo mysql --user=bioinfo --password=bioinfo2013 biocore < db/travis.sql
-  
   #	Run Import
   - cd scripts
   - python dolphin_wrapper.py -r 4 -c Travis
   - sudo ../unitTesting/run_insertion.sh
-
   #	Tophat2
   - travis_wait 30 python dolphin_wrapper.py -r 7 -c Travis
   - sudo tree /home/travis/build/testrun4
-  - sudo cat /home/travis/build/testrun4/tmp/logs/*
   
 after_script:
   - mysql -e "show databases;" -uroot
@@ -109,4 +106,3 @@ after_script:
   - mysql -e "use biocore; SELECT * FROM service_run" -uroot
   - mysql -e "use biocore; SELECT * FROM workflows" -uroot
   - mysql -e "use biocore; SELECT * FROM workflow_run" -uroot
-  
